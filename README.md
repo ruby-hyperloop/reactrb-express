@@ -42,11 +42,13 @@ index.html:
     <script type="text/ruby" src="clock.rb"></script>
 
     <script type="text/ruby">
-      React.render(React.create_element(Clock),Element["body"])
+      React.render(React.create_element(Clock),Element["#clock"])
     </script>
 
   </head>
   <body>
+    <div id="clock"></div>
+    <div>The time brought to you by <a href="https://github.com/reactive-ruby/inline-reactive-ruby">inline-reactive-ruby</a></div>
   </body>
 </html>
 ```
