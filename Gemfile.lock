@@ -1,0 +1,40 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    hike (1.2.3)
+    opal (0.8.1)
+      hike (~> 1.2)
+      sourcemap (~> 0.1.0)
+      sprockets (~> 3.1)
+      tilt (>= 1.4)
+    opal-activesupport (0.2.0)
+      opal (>= 0.5.0, < 1.0.0)
+    opal-browser (0.2.0)
+      opal
+      paggio
+    opal-jquery (0.4.1)
+      opal (>= 0.7.0, < 0.10.0)
+    paggio (0.2.5)
+    rack (1.6.4)
+    rake (10.4.2)
+    reactive-ruby (0.7.31)
+      opal
+      opal-activesupport (>= 0.2.0)
+      opal-browser
+    sourcemap (0.1.1)
+    sprockets (3.4.0)
+      rack (> 1, < 3)
+    tilt (2.0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  opal
+  opal-browser
+  opal-jquery
+  rake
+  reactive-ruby
+
+BUNDLED WITH
+   1.10.6
