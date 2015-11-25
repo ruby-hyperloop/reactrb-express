@@ -3,7 +3,7 @@ react.rb for static sites, with no build process needed
 
 ## How To
 
-+ Include inline-reactive-ruby.js in with your js files, or simply link to it here: https://rawgit.com/reactive-ruby/inline-reactive-ruby/master/inline-reactive-ruby.js
++ Include inline-reactive-ruby.js in with your js files, or link to it from here: https://rawgit.com/reactive-ruby/inline-reactive-ruby/master/inline-reactive-ruby.js
 + Link to a version of jQuery
 + Specify your ruby code inside of `<script type="text/ruby">...</script>` tags
 + or link to your ruby code using the src attribute `<script type="text/ruby" src=.../>`
@@ -36,9 +36,9 @@ index.html:
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Inline Reactive Ruby Demo</title>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <!-- scripts 
-    <script type="text/ruby" src="inline-reactive-ruby.js" />
-
+    <script src="inline-reactive-ruby.js" />
+    
+    <!-- scripts can be remote or inline -->
     <script type="text/ruby" src="clock.rb"></script>
 
     <script type="text/ruby">
@@ -47,6 +47,37 @@ index.html:
 
   </head>
   <body>
-    <div id="content"></div>
   </body>
 </html>
+```
+```ruby
+# clock.rb
+class Clock
+
+  include React::Component
+
+  define_state time: Time.now
+
+  after_mount do
+    every(1) { time! Time.now }
+  end
+
+  def render
+    "The time is #{time}"
+  end
+
+end
+```
+
+# Building and Contributing
+
+To build, clone the repo, run `bundle install` and then `bundle exec rake`
+
+This will combine all the pieces and build the `inline-reactive-ruby.js` file.
+
+Contributions are welcome - things we need:
+
++ Examples
++ Some test cases
++ Minimization
+
