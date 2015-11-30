@@ -1,4 +1,4 @@
-class Clock < React::Component
+class Clock < React::Component::Base
 
   before_mount do
     state.time! Time.now
