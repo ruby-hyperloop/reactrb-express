@@ -19,7 +19,7 @@ react.rb for static sites, with no build process needed
 Your ruby code will be compiled by the browser into javascript, and executed.  Any compilation or runtime errors
 will be briefly reported to the console.
 
-Ruby classes can mixin React::Component to become React components, and can use the React.rb 
+Ruby classes can mixin React::Component to become React components, and can use the React.rb
 DSL to dynamically generate reactive DOM nodes.
 
 ## Example
@@ -37,12 +37,12 @@ index.html:
     <title>Inline Reactive Ruby Demo</title>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="inline-reactive-ruby.js" />
-    
+
     <!-- scripts can be remote or inline -->
     <script type="text/ruby" src="clock.rb"></script>
 
     <script type="text/ruby">
-      React.render(React.create_element(Clock),Element["#clock"])
+      Element["body"].render { Clock() }
     </script>
 
   </head>
@@ -54,22 +54,28 @@ index.html:
 ```
 ```ruby
 # clock.rb
-class Clock
+class Clock < React::Component::Base
 
-  include React::Component
-
-  define_state time: Time.now
-
-  after_mount do
-    every(1) { time! Time.now }
+  before_mount do
+    state.time! Time.now
+    every(1) { state.time! Time.now }
   end
 
   def render
-    "The time is #{time}"
+    "The time is #{state.time}"
   end
 
 end
 ```
+
+# Running a server
+
+If you are an absolute beginner, you will want a server to test your code... here is how:
+
++ MacOS: type `python -m SimpleHTTPServer 8000` in a terminal in the same directory that your index.html file lives
++ Windows: try this link http://ccm.net/faq/2568-tinyweb-server-on-windows (not tested)
+
+Once you are set up you should be able to go to `localhost` in your browser.
 
 # Building and Contributing
 
@@ -82,4 +88,3 @@ Contributions are welcome - things we need:
 + Examples
 + Some test cases
 + Minimization
-
