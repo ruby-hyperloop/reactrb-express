@@ -1,15 +1,12 @@
-class Clock
+class Clock < React::Component::Base
 
-  include React::Component
-
-  define_state time: Time.now
-
-  after_mount do
-    every(1) { time! Time.now }
+  before_mount do
+    state.time! Time.now
+    every(1) { state.time! Time.now }
   end
 
   def render
-    "The time is #{time}"
+    "The time is #{state.time}"
   end
 
 end
