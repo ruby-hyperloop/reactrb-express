@@ -68,20 +68,25 @@ class Clock < React::Component::Base
 end
 ```
 
-# Running a server
+# Trying it out using github
 
-If you are an absolute beginner, you will want a server to test your code... here is how:
+Github makes a great sandbox to try every thing out online with nothing but your browser.
 
-+ MacOS: type `python -m SimpleHTTPServer 8000` in a terminal in the same directory that your index.html file lives
-+ Windows: try this link http://ccm.net/faq/2568-tinyweb-server-on-windows (not tested)
+Have a look at the instructions here: https://pages.github.com/
 
-Once you are set up you should be able to go to `localhost` in your browser.
+but rather than "cloning" the repo, and editing your files on your computer
+you can just create and edit files right on the github site.  
+
 
 # Building and Contributing
 
 To build, clone the repo, run `bundle install` and then `bundle exec rake`
 
 This will combine all the pieces and build the `inline-reactive-ruby.js` file.
+
+To be sure we have no ruby dependencies we use this server for smoke testing:
+
+`python -m SimpleHTTPServer 4000`
 
 Contributions are welcome - things we need:
 
