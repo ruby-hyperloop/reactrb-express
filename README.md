@@ -1,4 +1,5 @@
 # inline-reactive-ruby
+
 react.rb for static sites, with no build process needed
 
 ## How To
@@ -27,7 +28,7 @@ DSL to dynamically generate reactive DOM nodes.
 See this example in action here: http://reactive-ruby.github.io/inline-reactive-ruby/
 
 index.html:
-```HTML
+``` html
 <!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
@@ -42,7 +43,7 @@ index.html:
     <script type="text/ruby" src="clock.rb"></script>
 
     <script type="text/ruby">
-      Element["body"].render { Clock() }
+      Element["#clock"].render { Clock() }
     </script>
 
   </head>
@@ -52,10 +53,10 @@ index.html:
   </body>
 </html>
 ```
+
 ```ruby
 # clock.rb
 class Clock < React::Component::Base
-
   before_mount do
     state.time! Time.now
     every(1) { state.time! Time.now }
@@ -64,7 +65,6 @@ class Clock < React::Component::Base
   def render
     "The time is #{state.time}"
   end
-
 end
 ```
 
@@ -75,7 +75,7 @@ Github makes a great sandbox to try every thing out online with nothing but your
 Have a look at the instructions here: https://pages.github.com/
 
 but rather than "cloning" the repo, and editing your files on your computer
-you can just create and edit files right on the github site.  
+you can just create and edit files right on the github site.
 
 
 # Building and Contributing
