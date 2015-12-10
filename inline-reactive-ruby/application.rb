@@ -1,5 +1,7 @@
 require 'opal'
 require 'opal/compiler'
+require 'browser'
+require 'browser/socket'
 require 'browser/interval'
 require 'browser/delay'
 require 'opal-jquery'
