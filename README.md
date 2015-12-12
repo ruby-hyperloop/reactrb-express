@@ -77,6 +77,9 @@ Have a look at the instructions here: https://pages.github.com/
 but rather than "cloning" the repo, and editing your files on your computer
 you can just create and edit files right on the github site.  
 
+# Mounting Components
+
+In addition to the standard ways to mount top level components inline-reactive-ruby will directly mount components that have the `data-reactrb-mount` attribute.  The attribute value should be the fully qualified name of the component.  For example "Clock".  Any additional data attributes will be passed as params to the component.  The attribute names will be snake cased (i.e. `data-foo-bar` becomes the `foo_bar` key)
 
 # Building and Contributing
 
