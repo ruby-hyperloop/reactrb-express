@@ -21,6 +21,7 @@ Document.ready? do
   end
   Promise.when(*promises).then do
     compiled_code = nil
+    continue_to_mounting = nil
     begin
       compiled_code = Opal::Compiler.new(code.join("\n")).compile
     rescue Exception => e
@@ -28,10 +29,24 @@ Document.ready? do
       `console.error(message)`
     end
     begin
-      `eval(compiled_code)` if compiled_code
+      `eval(compiled_code)`
+      continue_to_mounting = true
     rescue Exception => e
       message = "Error raised during execution: #{e.message}"
       `console.error(message)`
-    end
+    end if compiled_code
+    Element["[data-reactrb-mount]"].each do |mount_point|
+      component_name = mount_point.attr("data-reactrb-mount")
+      component = nil
+      begin
+        component = Object.const_get(component_name)
+      rescue
+        message = "Could not find Component class named #{component_name}"
+        `console.error(message)`
+        next
+      end
+      params = Hash[*Hash.new(mount_point.data).collect { |name, value| [name.underscore, value] unless name == "reactrbMount"}.compact.flatten(1)]
+      React.render(React.create_element(component, params), mount_point)
+    end if continue_to_mounting
   end
 end

@@ -65184,7 +65184,7 @@ Opal.modules["reactive-ruby"] = function(Opal) {
   Opal.dynamic_require_severity = "error";
   var $a, $b, TMP_1, self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice;
 
-  Opal.add_stubs(['$require', '$ready?', '$each_with_index', '$attr', '$<<', '$then', '$[]=', '$body', '$get', '$html', '$[]', '$compile', '$new', '$join', '$message', '$when']);
+  Opal.add_stubs(['$require', '$ready?', '$each_with_index', '$attr', '$<<', '$then', '$[]=', '$body', '$get', '$html', '$[]', '$compile', '$new', '$join', '$message', '$each', '$const_get', '$flatten', '$compact', '$collect', '$==', '$underscore', '$data', '$render', '$create_element', '$when']);
   self.$require("opal");
   self.$require("opal/compiler");
   self.$require("browser");
@@ -65206,9 +65206,10 @@ if (response == null) response = nil;
         } else {
         return code['$[]='](index, script_tag.$html())
       }}, TMP_2.$$s = self, TMP_2), $a).call($b);
-    return ($a = ($c = ($d = $scope.get('Promise')).$when.apply($d, [].concat(promises))).$then, $a.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, compiled_code = nil, e = nil, message = nil;
+    return ($a = ($c = ($d = $scope.get('Promise')).$when.apply($d, [].concat(promises))).$then, $a.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $a, $b, TMP_5, compiled_code = nil, continue_to_mounting = nil, e = nil, message = nil;
 
     compiled_code = nil;
+      continue_to_mounting = nil;
       try {
       compiled_code = (($scope.get('Opal')).$$scope.get('Compiler')).$new(code.$join("\n")).$compile()
       } catch ($err) {if (Opal.rescue($err, [$scope.get('Exception')])) {e = $err;
@@ -65216,15 +65217,37 @@ if (response == null) response = nil;
         console.error(message);
         }else { throw $err; }
       };
-      try {
       if (compiled_code !== false && compiled_code !== nil) {
-          return eval(compiled_code);
-          } else {
-          return nil
-        }
-      } catch ($err) {if (Opal.rescue($err, [$scope.get('Exception')])) {e = $err;
-        message = "Error raised during execution: " + (e.$message());
-        return console.error(message);
-        }else { throw $err; }
+        try {
+        eval(compiled_code);
+          continue_to_mounting = true;
+        } catch ($err) {if (Opal.rescue($err, [$scope.get('Exception')])) {e = $err;
+          message = "Error raised during execution: " + (e.$message());
+          console.error(message);
+          }else { throw $err; }
+        }};
+      if (continue_to_mounting !== false && continue_to_mounting !== nil) {
+        return ($a = ($b = $scope.get('Element')['$[]']("[data-reactrb-mount]")).$each, $a.$$p = (TMP_5 = function(mount_point){var self = TMP_5.$$s || this, $a, $b, $c, TMP_6, component_name = nil, component = nil, params = nil;
+if (mount_point == null) mount_point = nil;
+        component_name = mount_point.$attr("data-reactrb-mount");
+          component = nil;
+          try {
+          component = $scope.get('Object').$const_get(component_name)
+          } catch ($err) {if (true) {
+            message = "Could not find Component class named " + (component_name);
+            console.error(message);
+            return nil;;
+            }else { throw $err; }
+          };
+          params = ($a = $scope.get('Hash'))['$[]'].apply($a, [].concat(($b = ($c = $scope.get('Hash').$new(mount_point.$data())).$collect, $b.$$p = (TMP_6 = function(name, value){var self = TMP_6.$$s || this;
+if (name == null) name = nil;if (value == null) value = nil;
+          if (name['$==']("reactrbMount")) {
+              return nil
+              } else {
+              return [name.$underscore(), value]
+            }}, TMP_6.$$s = self, TMP_6), $b).call($c).$compact().$flatten(1)));
+          return $scope.get('React').$render($scope.get('React').$create_element(component, params), mount_point);}, TMP_5.$$s = self, TMP_5), $a).call($b)
+        } else {
+        return nil
       };}, TMP_4.$$s = self, TMP_4), $a).call($c);}, TMP_1.$$s = self, TMP_1), $a).call($b);
 })(Opal);
