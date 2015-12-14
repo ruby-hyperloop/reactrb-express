@@ -68,6 +68,10 @@ class Clock < React::Component::Base
 end
 ```
 
+# Want a larger example?  
+
+The [ReactRB ChatRoom application and tutorial](http://reactive-ruby.github.io/docs/tutorial.html) uses inline reactive ruby.
+
 # Trying it out using github
 
 Github makes a great sandbox to try every thing out online with nothing but your browser.
