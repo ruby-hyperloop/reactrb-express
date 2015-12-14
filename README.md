@@ -3,10 +3,10 @@ react.rb for static sites, with no build process needed
 
 ## How To
 
-+ Include inline-reactive-ruby.js in with your js files, or link to it from here: https://rawgit.com/reactive-ruby/inline-reactive-ruby/master/inline-reactive-ruby.js
-+ Link to a version of jQuery
-+ Specify your ruby code inside of `<script type="text/ruby">...</script>` tags
-+ or link to your ruby code using the src attribute `<script type="text/ruby" src=.../>`
+1. Include inline-reactive-ruby.js in with your js files, or link to it from here: https://rawgit.com/reactive-ruby/inline-reactive-ruby/master/inline-reactive-ruby.js
+2. Link to a version of jQuery
+3. Specify your ruby code inside of `<script type="text/ruby">...</script>` tags    
+   or link to your ruby code using the src attribute `<script type="text/ruby" src=.../>`
 
 ## What is included
 
