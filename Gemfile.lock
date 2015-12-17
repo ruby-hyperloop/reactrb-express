@@ -1,8 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    concurrent-ruby (1.0.0)
     hike (1.2.3)
-    opal (0.8.1)
+    opal (0.8.0)
       hike (~> 1.2)
       sourcemap (~> 0.1.0)
       sprockets (~> 3.1)
@@ -14,15 +15,16 @@ GEM
       paggio
     opal-jquery (0.4.1)
       opal (>= 0.7.0, < 0.10.0)
-    paggio (0.2.5)
+    paggio (0.2.6)
     rack (1.6.4)
     rake (10.4.2)
-    reactive-ruby (0.7.32)
-      opal
+    reactive-ruby (0.7.35)
+      opal (= 0.8.0)
       opal-activesupport (>= 0.2.0)
-      opal-browser
+      opal-browser (= 0.2.0)
     sourcemap (0.1.1)
-    sprockets (3.4.1)
+    sprockets (3.5.2)
+      concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     tilt (2.0.1)
 
