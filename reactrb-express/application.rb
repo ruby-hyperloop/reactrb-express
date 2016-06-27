@@ -12,6 +12,7 @@ Document.ready? do
   # rubocop:disable Lint/RescueException
   # need to catch and report all exceptions
   promises = []
+  code = []
   Element['script[type="text/ruby"]'].each_with_index do |script_tag, index|
     src = script_tag.attr('src')
     if src

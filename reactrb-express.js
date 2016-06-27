@@ -71219,7 +71219,7 @@ Opal.modules["reactrb"] = function(Opal) {
   var OPAL_CONFIG = { method_missing: true, arity_check: false, freezing: true, tainting: true };
   var $a, $b, TMP_1, self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice;
 
-  Opal.add_stubs(['$require', '$ready?', '$each_with_index', '$attr', '$<<', '$then', '$[]=', '$code', '$body', '$get', '$html', '$[]', '$compile', '$new', '$join', '$message', '$each', '$const_get', '$flatten', '$compact', '$collect', '$==', '$underscore', '$data', '$render', '$create_element', '$when']);
+  Opal.add_stubs(['$require', '$ready?', '$each_with_index', '$attr', '$<<', '$then', '$[]=', '$body', '$get', '$html', '$[]', '$puts', '$count', '$compile', '$new', '$join', '$message', '$each', '$const_get', '$flatten', '$compact', '$collect', '$==', '$underscore', '$data', '$render', '$create_element', '$when']);
   self.$require("opal");
   self.$require("opal/compiler");
   self.$require("browser");
@@ -71229,25 +71229,27 @@ Opal.modules["reactrb"] = function(Opal) {
   self.$require("opal-jquery");
   self.$require("react-latest");
   self.$require("reactrb");
-  return ($a = ($b = $scope.get('Document'))['$ready?'], $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $a, $b, TMP_2, $c, TMP_4, $d, promises = nil;
+  return ($a = ($b = $scope.get('Document'))['$ready?'], $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $a, $b, TMP_2, $c, TMP_4, $d, promises = nil, code = nil;
 
   promises = [];
+    code = [];
     ($a = ($b = $scope.get('Element')['$[]']("script[type=\"text/ruby\"]")).$each_with_index, $a.$$p = (TMP_2 = function(script_tag, index){var self = TMP_2.$$s || this, $a, $b, TMP_3, src = nil;
 if (script_tag == null) script_tag = nil;if (index == null) index = nil;
     src = script_tag.$attr("src");
       if (src !== false && src !== nil) {
         return promises['$<<'](($a = ($b = $scope.get('HTTP').$get(src)).$then, $a.$$p = (TMP_3 = function(response){var self = TMP_3.$$s || this;
 if (response == null) response = nil;
-        return self.$code()['$[]='](index, response.$body())}, TMP_3.$$s = self, TMP_3), $a).call($b))
+        return code['$[]='](index, response.$body())}, TMP_3.$$s = self, TMP_3), $a).call($b))
         } else {
-        return self.$code()['$[]='](index, script_tag.$html())
+        return code['$[]='](index, script_tag.$html())
       };}, TMP_2.$$s = self, TMP_2), $a).call($b);
+    self.$puts("promises count = " + (promises.$count()));
     return ($a = ($c = ($d = $scope.get('Promise')).$when.apply($d, Opal.to_a(promises))).$then, $a.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $a, $b, TMP_5, compiled_code = nil, continue_to_mounting = nil, e = nil, message = nil;
 
     compiled_code = nil;
       continue_to_mounting = nil;
       try {
-      compiled_code = (($scope.get('Opal')).$$scope.get('Compiler')).$new(self.$code().$join("\n")).$compile()
+      compiled_code = (($scope.get('Opal')).$$scope.get('Compiler')).$new(code.$join("\n")).$compile()
       } catch ($err) {if (Opal.rescue($err, [$scope.get('Exception')])) {e = $err;
         try {
           message = "Error raised while compiling: " + (e.$message());
