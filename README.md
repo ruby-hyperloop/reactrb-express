@@ -32,8 +32,6 @@ index.html:
 ``` html
 <!DOCTYPE html>
 <!--[if IE]><![endif]-->
-<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
   <head>
     <meta charset="utf-8">
