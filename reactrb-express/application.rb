@@ -5,13 +5,16 @@ require 'browser/socket'
 require 'browser/interval'
 require 'browser/delay'
 require 'opal-jquery'
-require 'reactive-ruby'
+require 'react-latest'
+require 'reactrb'
 
 Document.ready? do
-  code = []
+  # rubocop:disable Lint/RescueException
+  # need to catch and report all exceptions
   promises = []
   Element['script[type="text/ruby"]'].each_with_index do |script_tag, index|
-    if src = script_tag.attr('src')
+    src = script_tag.attr('src')
+    if src
       promises << HTTP.get(src).then do |response|
         code[index] = response.body
       end
@@ -35,8 +38,8 @@ Document.ready? do
       message = "Error raised during execution: #{e.message}"
       `console.error(message)`
     end if compiled_code
-    Element["[data-reactrb-mount]"].each do |mount_point|
-      component_name = mount_point.attr("data-reactrb-mount")
+    Element['[data-reactrb-mount]'].each do |mount_point|
+      component_name = mount_point.attr('data-reactrb-mount')
       component = nil
       begin
         component = Object.const_get(component_name)
@@ -45,7 +48,9 @@ Document.ready? do
         `console.error(message)`
         next
       end
-      params = Hash[*Hash.new(mount_point.data).collect { |name, value| [name.underscore, value] unless name == "reactrbMount"}.compact.flatten(1)]
+      params = Hash[*Hash.new(mount_point.data).collect do |name, value|
+        [name.underscore, value] unless name == 'reactrbMount'
+      end.compact.flatten(1)]
       React.render(React.create_element(component, params), mount_point)
     end if continue_to_mounting
   end

@@ -4,18 +4,17 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Inline Reactive Ruby Demo</title>
+    <title>Reactrb-Express Demo</title>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="inline-reactive-ruby.js"></script>
+    <script src="reactrb-express.js"
+    <script src="https://rawgit.com/reactrb/reactrb-express/master/reactrb-express.js"></script>
 
     <script type="text/ruby" src="clock.rb"></script>
 
-    <script type="text/ruby">
-      Element["#clock"].render { Clock() }
-    </script>
-
   </head>
   <body>
-    <div id="clock"></div>
+    <div data-reactrb-mount="Clock"
+         data-format="The time is: %a, %e %b %Y %H:%M:%S %z">
+    </div>
   </body>
 </html>
