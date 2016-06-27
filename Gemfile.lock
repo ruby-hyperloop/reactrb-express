@@ -18,7 +18,7 @@ GEM
     paggio (0.2.6)
     rack (1.6.4)
     rake (11.2.2)
-    reactrb (0.8.1)
+    reactrb (0.8.3)
       opal (>= 0.8.0)
       opal-activesupport (>= 0.2.0)
       opal-browser (= 0.2.0)

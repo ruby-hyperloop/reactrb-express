@@ -67974,7 +67974,7 @@ Opal.modules["react/top_level"] = function(Opal) {
   var OPAL_CONFIG = { method_missing: true, arity_check: false, freezing: true, tainting: true };
   var $a, $b, TMP_7, self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $hash2 = Opal.hash2, $klass = Opal.klass;
 
-  Opal.add_stubs(['$require', '$create_element', '$to_proc', '$!', '$Native', '$to_n', '$raise', '$include', '$class', '$kind_of?', '$build', '$const_defined?', '$instance_eval', '$respond_to?', '$dom_node', '$find', '$render', '$new']);
+  Opal.add_stubs(['$require', '$create_element', '$to_proc', '$!', '$Native', '$to_n', '$raise', '$include', '$class', '$kind_of?', '$build', '$const_defined?', '$instance_eval', '$respond_to?', '$dom_node', '$find', '$define_method', '$render', '$new']);
   self.$require("native");
   self.$require("active_support");
   self.$require("react/component/base");
@@ -68072,24 +68072,37 @@ Opal.modules["react/top_level"] = function(Opal) {
     });
   })($scope.base);
   if ((($a = $scope.get('Object')['$const_defined?']("Element")) !== nil && (!$a.$$is_boolean || $a == true))) {
-    return ($a = ($b = $scope.get('Element')).$instance_eval, $a.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, TMP_8;
+    return ($a = ($b = $scope.get('Element')).$instance_eval, $a.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $a, $b, TMP_8;
 
     (function($base, $super) {
-        function $DummyContext(){};
-        var self = $DummyContext = $klass($base, $super, 'DummyContext', $DummyContext);
+        function $Element(){};
+        var self = $Element = $klass($base, $super, 'Element', $Element);
 
         var def = self.$$proto, $scope = self.$$scope;
 
-        return nil;
-      })(Opal.get('Element'), (((($scope.get('React')).$$scope.get('Component'))).$$scope.get('Base')));
+        return (function($base, $super) {
+          function $DummyContext(){};
+          var self = $DummyContext = $klass($base, $super, 'DummyContext', $DummyContext);
+
+          var def = self.$$proto, $scope = self.$$scope;
+
+          return nil;
+        })($scope.base, (((($scope.get('React')).$$scope.get('Component'))).$$scope.get('Base')))
+      })($scope.base, null);
       Opal.defs(self, '$find', function(selector) {
         var $a, self = this;
 
-        try {(function() {if ((($a = selector['$respond_to?']("dom_node")) !== nil && (!$a.$$is_boolean || $a == true))) {
-          return selector = selector.$dom_node()
-          } else {
-          return nil
-        }; return nil; })() } catch ($err) { selector };
+        if ((($a = selector['$respond_to?']("dom_node")) !== nil && (!$a.$$is_boolean || $a == true))) {
+          selector = (function() { try {
+          return selector.$dom_node()
+          } catch ($err) {if (true) {
+            try {
+              return selector
+            } finally {
+              Opal.gvars["!"] = Opal.exceptions.pop() || Opal.nil;
+            }
+            }else { throw $err; }
+          }})()};
         return $(selector);
       });
       Opal.defs(self, '$[]', function(selector) {
@@ -68097,14 +68110,12 @@ Opal.modules["react/top_level"] = function(Opal) {
 
         return self.$find(selector);
       });
-      return (Opal.def(self, '$render', TMP_8 = function() {
-        var $a, $b, TMP_9, self = this, $iter = TMP_8.$$p, block = $iter || nil;
+      return ($a = ($b = self).$define_method, $a.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, block, $a, $b, TMP_9;
 
-        TMP_8.$$p = null;
-        return $scope.get('React').$render(($a = ($b = (($scope.get('React')).$$scope.get('RenderingContext'))).$render, $a.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this, $a, $b;
+        block = TMP_8.$$p || nil, TMP_8.$$p = null;
+      return $scope.get('React').$render(($a = ($b = (($scope.get('React')).$$scope.get('RenderingContext'))).$render, $a.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this, $a, $b;
 
-        return ($a = ($b = ((Opal.get('Element')).$$scope.get('DummyContext')).$new()).$instance_eval, $a.$$p = block.$to_proc(), $a).call($b)}, TMP_9.$$s = self, TMP_9), $a).call($b, nil), self);
-      }), nil) && 'render';}, TMP_7.$$s = self, TMP_7), $a).call($b)
+        return ($a = ($b = ((Opal.get('Element')).$$scope.get('DummyContext')).$new()).$instance_eval, $a.$$p = block.$to_proc(), $a).call($b)}, TMP_9.$$s = self, TMP_9), $a).call($b, nil), self)}, TMP_8.$$s = self, TMP_8), $a).call($b, "render");}, TMP_7.$$s = self, TMP_7), $a).call($b)
     } else {
     return nil
   };
@@ -71183,7 +71194,7 @@ Opal.modules["reactive-ruby/version"] = function(Opal) {
 
     var def = self.$$proto, $scope = self.$$scope;
 
-    Opal.cdecl($scope, 'VERSION', "0.8.1")
+    Opal.cdecl($scope, 'VERSION', "0.8.3")
   })($scope.base)
 };
 
@@ -71219,7 +71230,7 @@ Opal.modules["reactrb"] = function(Opal) {
   var OPAL_CONFIG = { method_missing: true, arity_check: false, freezing: true, tainting: true };
   var $a, $b, TMP_1, self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice;
 
-  Opal.add_stubs(['$require', '$ready?', '$each_with_index', '$attr', '$<<', '$then', '$[]=', '$body', '$get', '$html', '$[]', '$puts', '$count', '$compile', '$new', '$join', '$message', '$each', '$const_get', '$flatten', '$compact', '$collect', '$==', '$underscore', '$data', '$render', '$create_element', '$when']);
+  Opal.add_stubs(['$require', '$ready?', '$each_with_index', '$attr', '$<<', '$then', '$[]=', '$body', '$get', '$html', '$[]', '$compile', '$new', '$join', '$message', '$each', '$const_get', '$flatten', '$compact', '$collect', '$==', '$underscore', '$data', '$render', '$create_element', '$when']);
   self.$require("opal");
   self.$require("opal/compiler");
   self.$require("browser");
@@ -71243,7 +71254,6 @@ if (response == null) response = nil;
         } else {
         return code['$[]='](index, script_tag.$html())
       };}, TMP_2.$$s = self, TMP_2), $a).call($b);
-    self.$puts("promises count = " + (promises.$count()));
     return ($a = ($c = ($d = $scope.get('Promise')).$when.apply($d, Opal.to_a(promises))).$then, $a.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $a, $b, TMP_5, compiled_code = nil, continue_to_mounting = nil, e = nil, message = nil;
 
     compiled_code = nil;
