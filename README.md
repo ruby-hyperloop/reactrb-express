@@ -84,7 +84,7 @@ end
 
 # Want a larger example?  
 
-The [Reactrb ChatRoom application and tutorial](http://reactrb.github.io/docs/tutorial.html) uses inline reactive ruby.
+The [Reactrb ChatRoom application and tutorial](http://reactrb.github.io/docs/tutorial.html) uses Reactrb-Express.
 
 # Trying it out using github
 
