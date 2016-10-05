@@ -71455,9 +71455,9 @@ Opal.modules["reactrb"] = function(Opal) {
 (function(Opal) {
   Opal.dynamic_require_severity = "error";
   var OPAL_CONFIG = { method_missing: true, arity_check: false, freezing: true, tainting: true };
-  var $a, $b, TMP_1, self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice;
+  var $a, $b, TMP_1, $c, TMP_6, self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$require', '$ready?', '$each_with_index', '$attr', '$<<', '$then', '$[]=', '$body', '$get', '$html', '$[]', '$compile', '$new', '$join', '$message', '$each', '$const_get', '$flatten', '$compact', '$collect', '$==', '$underscore', '$data', '$render', '$create_element', '$when']);
+  Opal.add_stubs(['$require', '$instance_eval', '$define_method', '$new', '$class_eval', '$render', '$to_proc', '$react_component', '$create_element', '$ready?', '$each_with_index', '$attr', '$<<', '$then', '$[]=', '$body', '$get', '$html', '$[]', '$compile', '$join', '$message', '$each', '$const_get', '$flatten', '$compact', '$collect', '$==', '$underscore', '$data', '$when']);
   self.$require("opal");
   self.$require("opal/compiler");
   self.$require("browser");
@@ -71467,21 +71467,51 @@ Opal.modules["reactrb"] = function(Opal) {
   self.$require("opal-jquery");
   self.$require("react-latest");
   self.$require("reactrb");
-  return ($a = ($b = $scope.get('Document'))['$ready?'], $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $a, $b, TMP_2, $c, TMP_4, $d, promises = nil, code = nil;
+  ($a = ($b = $scope.get('Element')).$instance_eval, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $a, $b, TMP_2, $c, TMP_4;
+
+  window.React.hyper_act_components = {};
+    ($a = ($b = self).$define_method, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $a, $b, TMP_3, component = nil;
+
+    component = window.React.hyper_act_components[self];
+      if ((($a = typeof component === "undefined") !== nil && (!$a.$$is_boolean || $a == true))) {
+        component = $scope.get('Class').$new((((($scope.get('React')).$$scope.get('Component'))).$$scope.get('Base')));
+        ($a = ($b = component).$class_eval, $a.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
+
+        return (Opal.def(self, '$needs_update?', function() {
+            var self = this, $splat_index = nil;
+
+            var array_size = arguments.length - 0;
+            if(array_size < 0) array_size = 0;
+            var _args = new Array(array_size);
+            for($splat_index = 0; $splat_index < array_size; $splat_index++) {
+              _args[$splat_index] = arguments[$splat_index + 0];
+            }
+            return true;
+          }), nil) && 'needs_update?'}, TMP_3.$$s = self, TMP_3), $a).call($b);
+        window.React.hyper_act_components[self] = component;};
+      return component;}, TMP_2.$$s = self, TMP_2), $a).call($b, "react_component");
+    return ($a = ($c = self).$define_method, $a.$$p = (TMP_4 = function(container, params){var self = TMP_4.$$s || this, block, $a, $b, TMP_5;
+if (container == null) container = nil;if (params == null) params = $hash2([], {});
+      block = TMP_4.$$p || nil, TMP_4.$$p = null;
+    ($a = ($b = self.$react_component()).$class_eval, $a.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $a, $b;
+
+      return ($a = ($b = self).$render, $a.$$p = block.$to_proc(), $a).call($b, container, params)}, TMP_5.$$s = self, TMP_5), $a).call($b);
+      return $scope.get('React').$render($scope.get('React').$create_element(self.$react_component()), self);}, TMP_4.$$s = self, TMP_4), $a).call($c, "render");}, TMP_1.$$s = self, TMP_1), $a).call($b);
+  return ($a = ($c = $scope.get('Document'))['$ready?'], $a.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $a, $b, TMP_7, $c, TMP_9, $d, promises = nil, code = nil;
 
   promises = [];
     code = [];
-    ($a = ($b = $scope.get('Element')['$[]']("script[type=\"text/ruby\"]")).$each_with_index, $a.$$p = (TMP_2 = function(script_tag, index){var self = TMP_2.$$s || this, $a, $b, TMP_3, src = nil;
+    ($a = ($b = $scope.get('Element')['$[]']("script[type=\"text/ruby\"]")).$each_with_index, $a.$$p = (TMP_7 = function(script_tag, index){var self = TMP_7.$$s || this, $a, $b, TMP_8, src = nil;
 if (script_tag == null) script_tag = nil;if (index == null) index = nil;
     src = script_tag.$attr("src");
       if (src !== false && src !== nil) {
-        return promises['$<<'](($a = ($b = $scope.get('HTTP').$get(src)).$then, $a.$$p = (TMP_3 = function(response){var self = TMP_3.$$s || this;
+        return promises['$<<'](($a = ($b = $scope.get('HTTP').$get(src)).$then, $a.$$p = (TMP_8 = function(response){var self = TMP_8.$$s || this;
 if (response == null) response = nil;
-        return code['$[]='](index, response.$body())}, TMP_3.$$s = self, TMP_3), $a).call($b))
+        return code['$[]='](index, response.$body())}, TMP_8.$$s = self, TMP_8), $a).call($b))
         } else {
         return code['$[]='](index, script_tag.$html())
-      };}, TMP_2.$$s = self, TMP_2), $a).call($b);
-    return ($a = ($c = ($d = $scope.get('Promise')).$when.apply($d, Opal.to_a(promises))).$then, $a.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $a, $b, TMP_5, compiled_code = nil, continue_to_mounting = nil, e = nil, message = nil;
+      };}, TMP_7.$$s = self, TMP_7), $a).call($b);
+    return ($a = ($c = ($d = $scope.get('Promise')).$when.apply($d, Opal.to_a(promises))).$then, $a.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this, $a, $b, TMP_10, compiled_code = nil, continue_to_mounting = nil, e = nil, message = nil;
 
     compiled_code = nil;
       continue_to_mounting = nil;
@@ -71510,7 +71540,7 @@ if (response == null) response = nil;
           }else { throw $err; }
         }};
       if (continue_to_mounting !== false && continue_to_mounting !== nil) {
-        return ($a = ($b = $scope.get('Element')['$[]']("[data-reactrb-mount]")).$each, $a.$$p = (TMP_5 = function(mount_point){var self = TMP_5.$$s || this, $a, $b, $c, TMP_6, component_name = nil, component = nil, params = nil;
+        return ($a = ($b = $scope.get('Element')['$[]']("[data-reactrb-mount]")).$each, $a.$$p = (TMP_10 = function(mount_point){var self = TMP_10.$$s || this, $a, $b, $c, TMP_11, component_name = nil, component = nil, params = nil;
 if (mount_point == null) mount_point = nil;
         component_name = mount_point.$attr("data-reactrb-mount");
           component = nil;
@@ -71526,15 +71556,15 @@ if (mount_point == null) mount_point = nil;
             }
             }else { throw $err; }
           };
-          params = ($a = $scope.get('Hash'))['$[]'].apply($a, Opal.to_a(($b = ($c = $scope.get('Hash').$new(mount_point.$data())).$collect, $b.$$p = (TMP_6 = function(name, value){var self = TMP_6.$$s || this;
+          params = ($a = $scope.get('Hash'))['$[]'].apply($a, Opal.to_a(($b = ($c = $scope.get('Hash').$new(mount_point.$data())).$collect, $b.$$p = (TMP_11 = function(name, value){var self = TMP_11.$$s || this;
 if (name == null) name = nil;if (value == null) value = nil;
           if (name['$==']("reactrbMount")) {
               return nil
               } else {
               return [name.$underscore(), value]
-            }}, TMP_6.$$s = self, TMP_6), $b).call($c).$compact().$flatten(1)));
-          return $scope.get('React').$render($scope.get('React').$create_element(component, params), mount_point);}, TMP_5.$$s = self, TMP_5), $a).call($b)
+            }}, TMP_11.$$s = self, TMP_11), $b).call($c).$compact().$flatten(1)));
+          return $scope.get('React').$render($scope.get('React').$create_element(component, params), mount_point);}, TMP_10.$$s = self, TMP_10), $a).call($b)
         } else {
         return nil
-      };}, TMP_4.$$s = self, TMP_4), $a).call($c);}, TMP_1.$$s = self, TMP_1), $a).call($b);
+      };}, TMP_9.$$s = self, TMP_9), $a).call($c);}, TMP_6.$$s = self, TMP_6), $a).call($c);
 })(Opal);
