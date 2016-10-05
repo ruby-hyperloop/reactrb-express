@@ -6,7 +6,7 @@ class Clock < React::Component::Base
     every(1) { state.time! Time.now.strftime(params.format) }
   end
 
-  def render
+  render do
     state.time
   end
 end
