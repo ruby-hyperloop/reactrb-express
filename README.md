@@ -1,4 +1,4 @@
-# Reactrb-Express
+#  ![](https://github.com/Serzhenka/hyper-loop-logos/blob/master/hyper-express_150.png) HyperExpress (Reactrb-Express)
 
 React.rb for static sites, with no build process needed
 
