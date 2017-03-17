@@ -5,31 +5,14 @@ require 'browser/socket'
 require 'browser/interval'
 require 'browser/delay'
 require 'opal-jquery'
-require 'react-latest'
-require 'reactrb'
-
-# patch current Element#render method so it does not remount on every render
-# waiting for reactrb fix #170
-Element.instance_eval do
-  `window.React.hyper_act_components = {}`
-  define_method :react_component do
-    component = `window.React.hyper_act_components[self]`
-    if `typeof component === "undefined"`
-      component = Class.new(React::Component::Base)
-      component.class_eval do
-        def needs_update?(*_args)
-          true
-        end
-      end
-      `window.React.hyper_act_components[self] = #{component}`
-    end
-    component
-  end
-  define_method :render do |container = nil, params = {}, &block|
-    react_component.class_eval { render(container, params, &block) }
-    React.render(React.create_element(react_component), self)
+module Hyperloop
+  class Component
+    VERSION = "0.12.3"
   end
 end
+require 'hyper-react'
+require 'react/top_level_render'
+require 'react/react-source-browser'
 
 Document.ready? do
   # rubocop:disable Lint/RescueException

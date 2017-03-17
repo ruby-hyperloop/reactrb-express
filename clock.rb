@@ -1,9 +1,9 @@
 # clock.rb:  Displays the current time
-class Clock < React::Component::Base
+class Clock < Hyperloop::Component
   param format: '%a, %e %b %Y %H:%M'
   before_mount do
-    state.time! Time.now.strftime(params.format)
-    every(1) { state.time! Time.now.strftime(params.format) }
+    mutate.time Time.now.strftime(params.format)
+    every(1) { mutate.time Time.now.strftime(params.format) }
   end
 
   render do
