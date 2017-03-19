@@ -38,7 +38,10 @@ index.html:
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Reactrb-Express Demo</title>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!--
     <script src="https://rawgit.com/reactrb/reactrb-express/master/reactrb-express.js"></script>
+    -->
+    <script src="reactrb-express.js"></script>
 
     <!-- ruby scripts can be fetched from the server or other remote source -->
     <script type="text/ruby" src="clock.rb"></script>
@@ -54,14 +57,11 @@ index.html:
   <body>
     <div id="clock"></div>
     <!--
-
     instead of using Element[...].render to attach a top level component, you
     can specify the react component and parameters using data- tags:
-
     <div data-reactrb-mount="Clock"
          data-format="The time is: %a, %e %b %Y %H:%M:%S %z">
     </div>
-
     -->
   </body>
 </html>
@@ -69,14 +69,14 @@ index.html:
 
 ```ruby
 # clock.rb:  Displays the current time
-class Clock < React::Component::Base
+class Clock < Hyperloop::Component
   param format: '%a, %e %b %Y %H:%M'
   before_mount do
-    state.time! Time.now.strftime(params.format)
-    every(1) { state.time! Time.now.strftime(params.format) }
+    mutate.time Time.now.strftime(params.format)
+    every(1) { mutate.time Time.now.strftime(params.format) }
   end
 
-  def render
+  render do
     state.time
   end
 end
