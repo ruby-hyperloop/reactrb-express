@@ -4,11 +4,18 @@ require 'opal-rails'
 require 'hyper-operation'
 require 'opal-browser'
 require 'opal-jquery'
+require 'uglifier'
 
-desc 'Build inline code editor support reactive-playground.js'
+desc 'Build reactrb express'
 task :build do
   Opal.append_path 'reactrb-express'
   File.binwrite 'reactrb-express.js', Opal::Builder.build('application').to_s
 end
 
-task default: [:build]
+desc 'Minify using uglifier gem'
+task :minify do
+  js_file = "reactrb-express.js"
+  js_min_file = "reactrb-express.min.js"
+  File.open(js_min_file, "w").write(Uglifier.new.compile(File.read(js_file)))
+end
+task default: [:build, :minify]
