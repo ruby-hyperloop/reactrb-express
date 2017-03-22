@@ -7,10 +7,10 @@ require 'browser/delay'
 require 'opal-jquery'
 module Hyperloop
   class Component
-    VERSION = "0.12.3"
+    VERSION = "0.12.4"
   end
 end
-require 'hyper-react'
+require 'hyper-operation'
 require 'react/top_level_render'
 require 'react/react-source-browser'
 

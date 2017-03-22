@@ -1,7 +1,8 @@
+require 'hyperloop-config'
 require 'rubygems'
-require 'opal'
+require 'opal-rails'
+require 'hyper-operation'
 require 'opal-browser'
-require 'hyper-react'
 require 'opal-jquery'
 
 desc 'Build inline code editor support reactive-playground.js'
