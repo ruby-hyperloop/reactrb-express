@@ -48964,7 +48964,7 @@ Opal.modules["react/rendering_context"] = function(Opal) {
   }
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $klass = Opal.klass;
 
-  Opal.add_stubs(['$attr_accessor', '$!', '$remove_nodes_from_args', '$build', '$waiting_on_resources', '$waiting_on_resources=', '$run_child_block', '$to_proc', '$nil?', '$dup', '$tap', '$detect', '$respond_to?', '$create_element', '$is_a?', '$last', '$span', '$to_s', '$<<', '$delete', '$include?', '$[]=', '$index', '$[]', '$each', '$as_node', '$try', '$empty?', '$!=', '$raise_render_error', '$==', '$count', '$improper_render', '$>', '$class', '$raise', '$define_method', '$unshift', '$send', '$render']);
+  Opal.add_stubs(['$attr_accessor', '$!', '$remove_nodes_from_args', '$build', '$waiting_on_resources', '$waiting_on_resources=', '$run_child_block', '$to_proc', '$nil?', '$dup', '$tap', '$detect', '$respond_to?', '$is_a?', '$last', '$create_element', '$span', '$to_s', '$<<', '$delete', '$include?', '$[]=', '$index', '$[]', '$each', '$as_node', '$try', '$empty?', '$!=', '$raise_render_error', '$==', '$count', '$improper_render', '$>', '$class', '$raise', '$define_method', '$unshift', '$send', '$render']);
   return (function($base) {
     var $React, self = $React = $module($base, 'React');
 
@@ -49013,13 +49013,14 @@ Opal.modules["react/rendering_context"] = function(Opal) {
 
                 return buffer}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $f).apply($g, [name].concat(Opal.to_a(args)))).$tap, $a.$$p = (TMP_3 = function(element){var self = TMP_3.$$s || this, $f, $g, $h, $i, $j, TMP_4;
 if (element == null) element = nil;
-                return (($f = [((($h = saved_waiting_on_resources) !== false && $h !== nil && $h != null) ? $h : ($i = ($j = buffer).$detect, $i.$$p = (TMP_4 = function(e){var self = TMP_4.$$s || this, $k;
+                (($f = [((($h = saved_waiting_on_resources) !== false && $h !== nil && $h != null) ? $h : ($i = ($j = buffer).$detect, $i.$$p = (TMP_4 = function(e){var self = TMP_4.$$s || this, $k;
 if (e == null) e = nil;
                   if ((($k = e['$respond_to?']("waiting_on_resources")) !== nil && $k != null && (!$k.$$is_boolean || $k == true))) {
                       return e.$waiting_on_resources()
                       } else {
                       return nil
-                    }}, TMP_4.$$s = self, TMP_4.$$arity = 1, TMP_4), $i).call($j)['$!']()['$!']())]), $g = element, $g['$waiting_on_resources='].apply($g, $f), $f[$f.length-1])}, TMP_3.$$s = self, TMP_3.$$arity = 1, TMP_3), $a).call($e);
+                    }}, TMP_4.$$s = self, TMP_4.$$arity = 1, TMP_4), $i).call($j)['$!']()['$!']())]), $g = element, $g['$waiting_on_resources='].apply($g, $f), $f[$f.length-1]);
+                  return ($f = element, ((($g = $f.$waiting_on_resources()) !== false && $g !== nil && $g != null) ? $g : $f['$waiting_on_resources='](($h = buffer.$last()['$is_a?']($scope.get('String')), $h !== false && $h !== nil && $h != null ?self.$waiting_on_resources() : $h))));}, TMP_3.$$s = self, TMP_3.$$arity = 1, TMP_3), $a).call($e);
               } else if ((($a = self.buffer.$last()['$is_a?']((($scope.get('React')).$$scope.get('Element')))) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
                 return ($a = ($f = self.buffer.$last()).$tap, $a.$$p = (TMP_6 = function(element){var self = TMP_6.$$s || this, $h, $i;
 if (element == null) element = nil;
@@ -49103,8 +49104,8 @@ if (key == null) key = nil;if (value == null) value = nil;
 
           TMP_14.$$p = null;
           result = Opal.yieldX($yield, []);
-          if ((($a = result.$try("acts_as_string?")) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
-            result = result.$to_s()};
+          if ((($a = result.$try(((($b = "acts_as_string?") !== false && $b !== nil && $b != null) ? $b : result['$is_a?']($scope.get('String'))))) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
+            result = result.$to_s().$span()};
           if ((($a = ((($b = result['$is_a?']($scope.get('String'))) !== false && $b !== nil && $b != null) ? $b : (($c = result['$is_a?']((($scope.get('React')).$$scope.get('Element'))), $c !== false && $c !== nil && $c != null ?self.buffer['$empty?']() : $c)))) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
             self.buffer['$<<'](result)};
           if ((($a = (($b = is_outer_scope !== false && is_outer_scope !== nil && is_outer_scope != null) ? self.buffer['$!=']([result]) : is_outer_scope)) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
@@ -52868,7 +52869,7 @@ Opal.modules["reactive-ruby/version"] = function(Opal) {
 
     var def = self.$$proto, $scope = self.$$scope;
 
-    Opal.cdecl($scope, 'VERSION', "0.12.2")
+    Opal.cdecl($scope, 'VERSION', "0.12.3")
   })($scope.base)
 };
 
